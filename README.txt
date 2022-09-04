@@ -1,6 +1,8 @@
 Скрипт просто меняет значения в зашифрованном файле, в процесс игры не инжектируется! 
 
-В settings.ini указывать путь к файлу client.dll по умолчанию такой : C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\client.dll
+Файлы settings.ini и CameraDistanceDota2.exe должны находится в одной папке.
+
+Перед первым запуском в settings.ini указывать путь к файлу client.dll по умолчанию такой : C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\client.dll
 
 Запускать через ярлык CameraDistanceDota2.exe.
 
