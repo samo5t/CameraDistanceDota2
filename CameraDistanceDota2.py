@@ -2,12 +2,13 @@ import glob
 import os
 import pathlib
 import time
+import subprocess
 from pathlib import Path
 import configparser
 os.system("mode con cols=115 lines=30")
 config = configparser.ConfigParser()
 config.read("settings.ini")
-
+d = config["path"]["directory"]
 print(config["path"]["directory"])
 targetPattern = r"\**\steamapps\common\dota 2 beta\game\dota\bin\win64\client.dll"
 
@@ -44,7 +45,9 @@ def out_green(text):
 def out_red(text):
     print("\033[31m {}" .format(text))
 
-
+print(config["path"]["directory"])
+startFile = (d[:d.find("\common")] + r'\common\dota 2 beta\game\bin\win64\dota2.exe','-c')
+print(startFile)
 print("Для успешного изменения необходимо, чтобы у вас был не модифицированный файл Client.dll\n" 
       "Используйте ваш путь к игре в файле settings.ini /**/steamapps/common/dota 2 beta/game/dota/bin/win64/\n" 
       "(C)cmct_")
@@ -70,7 +73,8 @@ print('Выберете номер в списке соответсвующей 
 if int(config["path"]["distance"]) >= 1 and int(config["path"]["distance"]) <=16:
     try:
         redist(config["path"]["directory"], int(config["path"]["distance"])-1)
-        out_green("Успешно\n Значение считано из файла, окно закроется через 1 секунду ")
+        out_green("Успешно\n Значение считано из файла, окно закроется через 1 секунду и запустится Dota")
+        subprocess.Popen(startFile)
         time.sleep(1)
     except Exception:
         out_red('Неверный путь')
@@ -86,4 +90,3 @@ else:
     else:
             out_green("Успешно")
 
-    os.system("pause")
